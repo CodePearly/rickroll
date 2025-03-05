@@ -29,13 +29,13 @@
     window.addEventListener('load', () => {
       if (video.requestFullscreen) {
         video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) { // Support for Safari
+      } else if (video.webkitRequestFullscreen) { // Safari compatibility
         video.webkitRequestFullscreen();
-      } else if (video.msRequestFullscreen) { // Support for IE/Edge
+      } else if (video.msRequestFullscreen) { // IE/Edge compatibility
         video.msRequestFullscreen();
       }
 
-      // Automatically resume playback if paused
+      // Prevent pausing the video
       video.addEventListener('pause', () => video.play());
     });
   </script>
