@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rick Roll Video</title>
+  <title>Rick Roll Video with Music</title>
   <style>
     body {
       margin: 0;
@@ -17,6 +17,13 @@
   </style>
 </head>
 <body>
+  <!-- Background Music -->
+  <audio id="background-music" autoplay loop>
+    <source src="audio.mp3" type="audio/mp3">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <!-- Rick Roll Video -->
   <video id="rickroll" autoplay loop muted>
     <source src="vid.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -24,10 +31,10 @@
 
   <script>
     const video = document.getElementById('rickroll');
+    const audio = document.getElementById('background-music');
 
     // Request fullscreen when the page loads
     window.addEventListener('load', () => {
-      // Fullscreen request compatible with Chrome
       if (video.requestFullscreen) {
         video.requestFullscreen();
       } else if (video.webkitRequestFullscreen) { // Safari compatibility
@@ -39,6 +46,9 @@
       // Prevent pausing the video
       video.addEventListener('pause', () => video.play());
     });
+
+    // Ensure background music plays even if paused
+    audio.addEventListener('pause', () => audio.play());
   </script>
 </body>
 </html>
